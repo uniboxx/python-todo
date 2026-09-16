@@ -25,5 +25,3 @@ st.text_input(
     on_change=bounded_add_todo,
     key="new_todo",
 )
-
-print(st.session_state)
