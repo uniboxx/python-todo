@@ -4,15 +4,10 @@ import sys
 FILEPATH = "todos.txt"
 
 
-def resource_path(relative_path):
-    """Ottiene il percorso assoluto della risorsa, funzionante sia in sviluppo che con PyInstaller"""
-    try:
-        # PyInstaller crea una cartella temporanea e memorizza il percorso in _MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
+def add_todo(st, todos):
+    todo = st.session_state["new_todo"].strip().capitalize()
+    todos.append(todo)
+    listToFile(todos)
 
 
 def fileToList(filepath=FILEPATH):
