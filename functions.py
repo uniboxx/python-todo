@@ -8,6 +8,7 @@ def add_todo(st, todos):
     todo = st.session_state["new_todo"].strip().capitalize()
     todos.append(todo)
     listToFile(todos)
+    st.session_state["new_todo"] = ""
 
 
 def fileToList(filepath=FILEPATH):
@@ -36,12 +37,3 @@ def listToFile(list, filepath=FILEPATH):
             file.write(f"{item}\n")
         # or
         # file.writelines([f"{item}\n" for item in list])
-
-
-def update_window(window, list):
-    window["todos"].update(values=list)
-    window["todo"].update(value="")
-
-
-def make_popup(sg, msg="Please select a todo"):
-    sg.popup(msg, font=("Helvetica", 16))
